@@ -18,6 +18,13 @@ import org.springframework.web.util.WebUtils;
 
 /**
  * This class is for error handling and helps to response an object with a message
+ * @ResponseBody signals that this advice is rendered straight into the response body.
+ *
+ * @ExceptionHandler configures the advice to only respond if an EmployeeNotFoundException is thrown.
+ *
+ * @ResponseStatus says to issue an HttpStatus.NOT_FOUND, i.e. an HTTP 404.
+ *
+ * The body of the advice generates the content. In this case, it gives the message of the exception.
  */
 @ControllerAdvice
 public class ChangeResultView {

@@ -17,6 +17,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * @RestController indicates that the data returned by each method will be written straight into the response body instead of rendering a template.
+ *
+ * We have routes for each operation (@GetMapping, @PostMapping, @PutMapping and @DeleteMapping,
+ * corresponding to HTTP GET, POST, PUT, and DELETE calls).
+ *
+ */
 
 @RestController
 public class OrderRestController {
