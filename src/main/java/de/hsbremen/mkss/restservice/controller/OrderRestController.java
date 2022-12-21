@@ -53,7 +53,7 @@ public class OrderRestController {
     }
 
     @PostMapping(value = "orders")
-    @ResponseStatus(value = HttpStatus.ACCEPTED)
+    @ResponseStatus(value = HttpStatus.CREATED)
     public ChangeResultView addOrder(@Nonnull @Valid @RequestBody Order order, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
@@ -64,7 +64,8 @@ public class OrderRestController {
     }
 
     @PostMapping(value = "/orders/{id}/items")
-    public ChangeResultView addItemToOrder(@PathVariable Integer id, @Valid @Nonnull @RequestBody LineItem lineItem, BindingResult bindingResult) throws OrderNotFoundException {
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public ChangeResultView addItemToOrder(@PathVariable Integer id, @Valid @Nonnull @RequestBody LineItem lineItem, BindingResult bindingResult) throws OrderNotFoundException, OrderStatusException {
 
         if (bindingResult.hasErrors()) {
             return ChangeResultView.from(bindingResult);

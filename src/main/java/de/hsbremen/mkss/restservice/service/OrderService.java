@@ -62,11 +62,11 @@ public class OrderService {
     }
 
     //Add a new Item
-    public LineItem addItem(LineItem lineItem, int id) throws OrderNotFoundException {
+    public LineItem addItem(LineItem lineItem, int id) throws OrderStatusException, OrderNotFoundException {
 
         Order order = get(id);
         if (IsOrderCommitted(order))
-            throw new OrderNotFoundException("Order is already Committed");
+            throw new OrderStatusException("Order is already Committed");
         order.addItem(lineItem);
         if (order.getItems().size() == 1)
             order.setStatus(OrderStatus.IN_PREPARATION);
