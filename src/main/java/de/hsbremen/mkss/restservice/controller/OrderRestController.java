@@ -78,25 +78,17 @@ public class OrderRestController {
 
     @PutMapping(value = "/orders/{id}/checkout")
     public ChangeResultView purchaseOrder(@PathVariable Integer id) throws OrderNotFoundException, OrderStatusException {
-
         return ChangeResultView.update(orderService.checkout(id));
-
-
     }
 
     @DeleteMapping(value = "/orders/{oid}/items/{lid}")
     public ChangeResultView removeItemFromOrder(@PathVariable Integer oid, @PathVariable Integer lid) throws OrderNotFoundException, ItemNotFound, OrderStatusException {
-
-
         return ChangeResultView.delete(orderService.removeItem(lid, oid));
-
-
     }
 
     @DeleteMapping("/orders/{id}")
     public ChangeResultView deleteOrder(@PathVariable int id) throws OrderNotFoundException {
         return ChangeResultView.delete(orderService.delete(id));
-
     }
 
 
